@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI-Powered Financial Categorizer</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>AI Financial Categorizer</h1>
+    </header>
+
+    <main>
+        <section id="upload-section">
+            <h2>Upload Transaction Data</h2>
+            <input type="file" id="transactionFile" accept=".csv,.xml,.json">
+            <button id="uploadBtn">Upload</button>
+        </section>
+
+        <section id="transactions-section">
+            <h2>Transactions</h2>
+            <table id="transactionsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Update Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Transactions will be injected here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="dashboard-section">
+            <h2>Spending Dashboard</h2>
+            <canvas id="spendingChart"></canvas>
+        </section>
+
+        <section id="budget-section">
+            <h2>Budget Tracker</h2>
+            <form id="budgetForm">
+                <label for="categorySelect">Select Category:</label>
+                <select id="categorySelect">
+                    <option value="Food">Food</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Entertainment">Entertainment</option>
+                </select>
+                <label for="budgetAmount">Budget Amount ($):</label>
+                <input type="number" id="budgetAmount" step="0.01">
+                <button type="submit">Set Budget</button>
+            </form>
+            <p id="budgetStatus"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Financial Categorizer - Alibaba Hackathon</p>
+    </footer>
+
+    <script src="../src/js/utils.js"></script>
+    <script src="../src/js/categorizer.js"></script>
+    <script src="../src/js/app.js"></script>
+</body>
+</html>
