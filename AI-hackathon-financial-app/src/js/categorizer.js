@@ -2,10 +2,10 @@
 
 // Category rules based on description keywords
 const categoryRules = {
-    "Food": ["Starbucks", "McDonalds", "Grocery", "Walmart", "Target"],
-    "Transport": ["Uber", "Lyft", "Gas", "Toll", "Parking"],
-    "Utilities": ["Electricity", "Water", "Gas Bill", "Internet"],
-    "Entertainment": ["Netflix", "Spotify", "Movie", "Concert", "Game"]
+    "Food": ["Starbucks", "McDonalds", "Grocery", "Walmart", "Target", "Restaurant", "Dinner", "Lunch", "Breakfast", "Cafe", "Bistro", "Grill", "Eats"],
+    "Transport": ["Uber", "Lyft", "Gas", "Toll", "Parking", "Taxi", "Bus", "Train", "Flight", "Car Rental"],
+    "Utilities": ["Electricity", "Water", "Gas Bill", "Internet", "Phone Bill", "Electric", "Utility"],
+    "Entertainment": ["Netflix", "Spotify", "Movie", "Concert", "Game", "Theater", "Show", "Streaming", "Subscription"]
 };
 
 // Default category for unmatched transactions
