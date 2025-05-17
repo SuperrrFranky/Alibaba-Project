@@ -1,3 +1,37 @@
+// Utility Functions
+
+// Parse CSV content into an array of objects
+function parseCSV(csvText) {
+    const lines = csvText.trim().split('\n');
+    const headers = lines[0].split(',').map(h => h.trim());
+    const data = lines.slice(1).map(line => {
+        const values = line.split(',').map(v => v.trim());
+        const obj = {};
+        headers.forEach((h, i) => obj[h] = values[i]);
+        return obj;
+    });
+    return data;
+}
+
+// Format amount as currency
+function formatCurrency(amount) {
+    return parseFloat(amount).toLocaleString('en-US', { 
+        style: 'currency', 
+        currency: 'USD' 
+    });
+}
+
+// Convert array of transactions to table rows
+function generateTransactionRows(transactions) {
+    return transactions.map(t => `
+        <tr>
+            <td>${t.Date || '-'}</td>
+            <td>${t.Description || '-'}</td>
+            <td>${formatCurrency(t.Amount)}</td>
+            <td>${t.Category || 'Uncategorized'}</td>
+        </tr>`);
+}
+
 // Display chart using Chart.js
 function renderSpendingChart(data) {
     // Clear existing chart if any

@@ -6,6 +6,108 @@
     <link rel="stylesheet" href="../style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f7fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f9f9f9;
+        }
+
+        button, input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: 400px !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,52 +115,64 @@
     </header>
 
     <main>
-        <section id="upload-section">
-            <h2>Upload Transaction Data</h2>
-            <input type="file" id="transactionFile" accept=".csv,.xml,.json">
-            <button id="uploadBtn">Upload</button>
-        </section>
+        <aside class="sidebar">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="#upload-section">Upload Transactions</a></li>
+                <li><a href="#budget-section">Budget Tracker</a></li>
+                <li><a href="#transactions-section">Transaction History</a></li>
+                <li><a href="#dashboard-section">Spending Dashboard</a></li>
+            </ul>
+        </aside>
 
-        <section id="budget-section">
-            <h2>Budget Tracker</h2>
-            <form id="budgetForm">
-                <label for="categorySelect">Select Category:</label>
-                <select id="categorySelect">
-                    <option value="Food">Food</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Utilities">Utilities</option>
-                    <option value="Entertainment">Entertainment</option>
-                </select>
-                <label for="budgetAmount">Budget Amount ($):</label>
-                <input type="number" id="budgetAmount" step="0.01">
-                <button type="submit">Set Budget</button>
-            </form>
-            <p id="budgetStatus"></p>
-        </section>
+        <div class="content">
+            <section id="upload-section">
+                <h2>Upload Transaction Data</h2>
+                <input type="file" id="transactionFile" accept=".csv,.xml,.json">
+                <button id="uploadBtn">Upload</button>
+            </section>
 
-        <section id="transactions-section">
-            <h2>Transactions</h2>
-            <table id="transactionsTable">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Amount</th>
-                        <th>Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Transactions will be injected here -->
-                </tbody>
-            </table>
-        </section>
+            <section id="budget-section">
+                <h2>Budget Tracker</h2>
+                <form id="budgetForm">
+                    <label for="categorySelect">Select Category:</label>
+                    <select id="categorySelect">
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Entertainment">Entertainment</option>
+                    </select>
+                    <br><br>
+                    <label for="budgetAmount">Budget Amount ($):</label>
+                    <input type="number" id="budgetAmount" step="0.01">
+                    <br><br>
+                    <button type="submit">Set Budget</button>
+                </form>
+                <p id="budgetStatus"></p>
+            </section>
 
-        <section id="dashboard-section">
-            <h2>Spending Dashboard</h2>
-            <canvas id="spendingChart"></canvas>
-        </section>
+            <section id="transactions-section">
+                <h2>Transactions</h2>
+                <table id="transactionsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Transactions will be injected here -->
+                    </tbody>
+                </table>
+            </section>
 
-        
+            <section id="dashboard-section">
+                <h2>Spending Dashboard</h2>
+                <div id="spendingChart"></div>
+            </section>
+        </div>
     </main>
 
     <footer>
