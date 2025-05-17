@@ -31,6 +31,19 @@ $(document).ready(function () {
         $('#transactionsTable tbody').html(rows.join(''));
     }
 
+    function generateTransactionRows(transactions) {
+        return transactions.map(t => {
+            return `
+                <tr>
+                    <td>${t.Date}</td>
+                    <td>${t.Description}</td>
+                    <td>${formatCurrency(t.Amount)}</td>
+                    <td>${t.Category}</td>
+                </tr>
+            `;
+        });
+    }
+
     // Handle category change
     $(document).on('change', '.category-select', function () {
         const selectedCategory = $(this).val();
